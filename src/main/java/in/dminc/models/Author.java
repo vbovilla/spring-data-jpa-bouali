@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @NoArgsConstructor
 @Data
 @Entity
@@ -32,10 +34,31 @@ public class Author {
 //            valueColumnName = "id_value",
 //            allocationSize = 1
 //    )
+    // when we do not specify id generator type,
+    // Spring JPA use GenerationType.AUTO, which will use one of SEQUENCE, TABLE, etc. based on the underlying database.
     private Integer id;
+
+    @Column(
+            name = "first_name"
+    )
     private String firstName;
     private String lastName;
+
+    @Column(
+            unique = true,
+            nullable = false
+    )
     private String email;
     private Integer age;
 
+    @Column(
+            updatable = false,
+            nullable = false
+    )
+    private LocalDateTime createdAt;
+
+    @Column(
+            insertable = false
+    )
+    private LocalDateTime lastModifiedAt;
 }
