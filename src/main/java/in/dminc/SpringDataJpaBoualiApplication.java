@@ -35,12 +35,12 @@ public class SpringDataJpaBoualiApplication {
 //            authorRepository.save(author);
 
 
-            Video abc = Video.builder()
-                    .name("abc")
-                    .length(10)
-                    .build();
-
-            videoRepository.save(abc);
+//            Video abc = Video.builder()
+//                    .name("abc")
+//                    .length(10)
+//                    .build();
+//
+//            videoRepository.save(abc);
         };
     }
 

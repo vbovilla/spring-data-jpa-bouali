@@ -11,8 +11,12 @@ import lombok.experimental.SuperBuilder;
 //@Builder
 @SuperBuilder
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)   //SINGLE_TABLE is the default inheritance strategy
-@DiscriminatorColumn(name = "resource_type")    //default --> dtype
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)   //SINGLE_TABLE is the default inheritance strategy
+//@DiscriminatorColumn(name = "resource_type")    //default --> dtype
+
+@Inheritance(strategy = InheritanceType.JOINED)
+
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Resource {
 
     @Id
