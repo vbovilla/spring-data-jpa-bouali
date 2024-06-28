@@ -1,23 +1,28 @@
 package in.dminc.models;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-@Builder
+//@Builder
+@SuperBuilder
 @Entity
 //@Table(name = "AUTHOR_TBL")
-public class Author {
+public class Author extends BaseEntity {
 
-    @Id
+//    @Id
 //    @GeneratedValue(
 //            strategy = GenerationType.SEQUENCE,
 //            generator = "author_sequence"
@@ -41,8 +46,8 @@ public class Author {
 //    )
     // when we do not specify id generator type,
     // Spring JPA use GenerationType.AUTO, which will use one of SEQUENCE, TABLE, etc. based on the underlying database.
-    @GeneratedValue
-    private Integer id;
+//    @GeneratedValue
+//    private Integer id;
 
     @Column(
             name = "first_name"

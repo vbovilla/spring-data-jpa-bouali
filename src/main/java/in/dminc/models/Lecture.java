@@ -2,16 +2,19 @@ package in.dminc.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-@Builder
+//@Builder
+@SuperBuilder
 @Entity
-public class Lecture {
+public class Lecture extends BaseEntity {
 
-    @Id
+//    @Id
 //    @GeneratedValue(
 //            strategy = GenerationType.SEQUENCE,
 //            generator = "lecture_sequence"
@@ -21,8 +24,8 @@ public class Lecture {
 //            sequenceName = "lecture_seq",
 //            allocationSize = 1
 //    )
-    @GeneratedValue
-    private Integer id;
+//    @GeneratedValue
+//    private Integer id;
     private String name;
 
     @ManyToOne

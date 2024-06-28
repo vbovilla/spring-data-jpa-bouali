@@ -1,20 +1,25 @@
 package in.dminc.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-@Builder
+//@Builder
+@SuperBuilder
 @Entity
-public class Section {
+public class Section extends BaseEntity {
 
-    @Id
+//    @Id
 //    @GeneratedValue(
 //            strategy = GenerationType.SEQUENCE,
 //            generator = "section_sequence"
@@ -24,8 +29,8 @@ public class Section {
 //            sequenceName = "section_seq",
 //            allocationSize = 1
 //    )
-    @GeneratedValue
-    private Integer id;
+//    @GeneratedValue
+//    private Integer id;
     private String name;
     private Integer sectionOrder;
 
