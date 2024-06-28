@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -12,9 +11,11 @@ import lombok.experimental.SuperBuilder;
 //@Builder
 @SuperBuilder
 @Entity
-public class Resource extends BaseEntity {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)   //SINGLE_TABLE is the default inheritance strategy
+@DiscriminatorColumn(name = "resource_type")    //default --> dtype
+public class Resource {
 
-//    @Id
+    @Id
 //    @GeneratedValue(
 //            strategy = GenerationType.SEQUENCE,
 //            generator = "resource_sequence"
@@ -24,8 +25,8 @@ public class Resource extends BaseEntity {
 //            sequenceName = "resource_seq",
 //            allocationSize = 1
 //    )
-//    @GeneratedValue
-//    private Integer id;
+    @GeneratedValue
+    private Integer id;
     private String name;
     private Integer size;
     private String url;
