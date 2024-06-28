@@ -2,14 +2,19 @@ package in.dminc.models;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
-@Data
+@AllArgsConstructor
+@Setter
+@Getter
+@Builder
 @Entity
+//@Table(name = "AUTHOR_TBL")
 public class Author {
 
     @Id
@@ -19,7 +24,7 @@ public class Author {
 //    )
 //    @SequenceGenerator(
 //            name = "author_sequence", // name should be same as on the 'generator' in @GeneratedValue.
-//            sequenceName = "author_sequence",
+//            sequenceName = "author_seq",
 //            allocationSize = 1
 //    )
 
@@ -36,6 +41,7 @@ public class Author {
 //    )
     // when we do not specify id generator type,
     // Spring JPA use GenerationType.AUTO, which will use one of SEQUENCE, TABLE, etc. based on the underlying database.
+    @GeneratedValue
     private Integer id;
 
     @Column(
@@ -61,4 +67,9 @@ public class Author {
             insertable = false
     )
     private LocalDateTime lastModifiedAt;
+
+    @ManyToMany(
+            mappedBy = "authors"
+    )
+    private List<Course> courses;
 }
