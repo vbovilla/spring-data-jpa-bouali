@@ -3,7 +3,6 @@ package in.dminc.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -61,17 +60,17 @@ public class Author extends BaseEntity {
     )
     private String email;
     private Integer age;
+    // commented createdAt, and lastModifiedAt properties/columns, since we have the same in BaseEntity.
+//    @Column(
+//            updatable = false,
+//            nullable = false
+//    )
+//    private LocalDateTime createdAt;
 
-    @Column(
-            updatable = false,
-            nullable = false
-    )
-    private LocalDateTime createdAt;
-
-    @Column(
-            insertable = false
-    )
-    private LocalDateTime lastModifiedAt;
+//    @Column(
+//            insertable = false
+//    )
+//    private LocalDateTime lastModifiedAt;
 
     @ManyToMany(
             mappedBy = "authors"
